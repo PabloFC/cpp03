@@ -10,6 +10,7 @@ ClapTrap::ClapTrap()
 ClapTrap::ClapTrap(const std::string &name)
     : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
+    // Initialize properties with specific name and default values
     std::cout << "ClapTrap constructor called for " << _name << std::endl;
 }
 
@@ -39,6 +40,7 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(const std::string &target)
 {
+    // Attack only if alive and has energy; consumes 1 energy point
     if (_hitPoints <= 0 || _energyPoints <= 0)
     {
         std::cout << "ClapTrap " << _name
@@ -53,6 +55,7 @@ void ClapTrap::attack(const std::string &target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
+    // Reduce hit points without going below zero
     _hitPoints -= amount;
     if (_hitPoints < 0)
         _hitPoints = 0;
@@ -62,6 +65,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
+    // Restore hit points if alive and has energy; consumes 1 energy point
     if (_hitPoints <= 0 || _energyPoints <= 0)
     {
         std::cout << "ClapTrap " << _name
