@@ -13,12 +13,14 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
+// Default constructor: initializes a ClapTrap with default values
 ClapTrap::ClapTrap()
     : _name("Default"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
     std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
+// Parameterized constructor: initializes a ClapTrap with a specific name
 ClapTrap::ClapTrap(const std::string &name)
     : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
@@ -26,12 +28,14 @@ ClapTrap::ClapTrap(const std::string &name)
     std::cout << "ClapTrap constructor called for " << _name << std::endl;
 }
 
+// Copy constructor: creates a new ClapTrap by copying another one
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
     *this = other;
     std::cout << "ClapTrap copy constructor called" << std::endl;
 }
 
+// Assignment operator: copies attributes from another ClapTrap to the current one
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
     if (this != &other)
@@ -45,11 +49,13 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
     return *this;
 }
 
+// Destructor: releases resources and displays destruction message
 ClapTrap::~ClapTrap()
 {
     std::cout << "ClapTrap destructor called for " << _name << std::endl;
 }
 
+// Attacks a target, consuming 1 energy point and causing damage
 void ClapTrap::attack(const std::string &target)
 {
     // Attack only if alive and has energy; consumes 1 energy point
@@ -65,6 +71,7 @@ void ClapTrap::attack(const std::string &target)
               << " points of damage!" << std::endl;
 }
 
+// Takes damage, reducing hit points (without going below zero)
 void ClapTrap::takeDamage(unsigned int amount)
 {
     // Reduce hit points without going below zero
@@ -75,6 +82,7 @@ void ClapTrap::takeDamage(unsigned int amount)
               << amount << " points of damage!" << std::endl;
 }
 
+// Repairs itself, restoring hit points and consuming 1 energy point
 void ClapTrap::beRepaired(unsigned int amount)
 {
     // Restore hit points if alive and has energy; consumes 1 energy point
